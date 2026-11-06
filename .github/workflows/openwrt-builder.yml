@@ -88,7 +88,11 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-
+    - name: Override DTS with 32M version
+      run: |
+        # 将仓库中备好的 32M dts 覆盖到 OpenWrt 源码树的目标位置
+        cp -f ./custom-board.dts ./target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
+        echo "DTS overridden successfully!"
     - name: Compile the firmware
       id: compile
       run: |
