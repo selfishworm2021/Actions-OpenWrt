@@ -100,7 +100,8 @@ jobs:
     - name: Override DTS with 32M version
       run: |
         # 将仓库中备好的 32M dts 覆盖到 OpenWrt 源码树的目标位置
-        cp -f ./mt7620a_xiaomi_miwifi-mini.dts ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
+        # cp -f ./mt7620a_xiaomi_miwifi-mini.dts ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
+        cp -f ./mt7628an_mediatek_mt7628an-eval-board.dts ./openwrt/target/linux/ramips/dts/mt7628an_mediatek_mt7628an-eval-board.dts
         find ./openwrt/target/linux/ramips/image/ -type f -exec sed -i 's/IMAGE_SIZE := 15872k/IMAGE_SIZE := 31744k/g' {} +
         echo "DTS overridden successfully!"
     - name: Compile the firmware
